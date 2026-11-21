@@ -21,6 +21,8 @@ on post-fs-data
     setprop keystore.module_hash.sent true
     setprop odsign.key.done 1
     setprop odsign.verification.done 1
+    setprop persist.sys.usb.config adb
+    setprop sys.usb.config adb
     start boot_watchdog
 
 on property:sys.boot_completed=1

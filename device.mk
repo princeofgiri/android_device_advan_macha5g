@@ -71,7 +71,9 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ota.allow_downgrade=true \
-    persist.vendor.recovery_allow_spl_downgrade=1
+    persist.vendor.recovery_allow_spl_downgrade=1 \
+    ro.adb.secure=0 \
+    persist.sys.usb.config=adb
 
 # Dynamic partition support in recovery
 PRODUCT_PACKAGES += \

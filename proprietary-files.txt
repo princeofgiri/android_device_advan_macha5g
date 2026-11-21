@@ -1603,6 +1603,8 @@ vendor/lib/vendor.mediatek.hardware.pq@2.9.so
 vendor/lib/vendor.mediatek.hardware.rcs@2.0.so
 vendor/lib/vendor.mediatek.hardware.videotelephony@1.0.so
 vendor/lib64/APUWareApusysServer.so
+vendor/lib64/libapexsupport.so
+vendor/lib/libapexsupport.so
 vendor/lib64/APUWareHmpServer.so
 vendor/lib64/APUWareUtilsServer.so
 vendor/lib64/android.hardware.biometrics.common-V1-ndk_platform.so

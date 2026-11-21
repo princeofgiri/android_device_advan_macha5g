@@ -1,0 +1,17 @@
+diff --git a/libs/gui/BLASTBufferQueue.cpp b/libs/gui/BLASTBufferQueue.cpp
+index 05fbc148d2..47f365d14b 100644
+--- a/libs/gui/BLASTBufferQueue.cpp
++++ b/libs/gui/BLASTBufferQueue.cpp
+@@ -1322,8 +1322,11 @@ void BLASTBufferQueue::resizeFrameEventHistory(size_t newSize) {
+     // This can be null during creation of the buffer queue, but resizing won't do anything at that
+     // point in time, so just ignore. This can go away once the class relationships and lifetimes of
+     // objects are cleaned up with a major refactor of BufferQueue as a whole.
++    // NOTE: Do NOT acquire mMutex here! BBQBufferQueueProducer::setMaxDequeuedBufferCount() calls
++    // resizeFrameEventHistory() synchronously from initialize(), which ALREADY holds mMutex.
++    // Acquiring mMutex here causes a fatal self-deadlock because mMutex is non-recursive std::mutex.
++    // mBufferItemConsumer itself is guarded by its own internal mMutex.
+     if (mBufferItemConsumer != nullptr) {
+-        std::unique_lock _lock{mMutex};
+         mBufferItemConsumer->resizeFrameEventHistory(newSize);
+     }
+ }

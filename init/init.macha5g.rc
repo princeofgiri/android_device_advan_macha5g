@@ -9,6 +9,11 @@ service boot_watchdog /system/bin/sh -c "sleep 300; echo 'Boot watchdog: Timeout
     disabled
     oneshot
 
+on early-init
+    setprop keystore.module_hash.sent true
+    setprop odsign.key.done 1
+    setprop odsign.verification.done 1
+
 on late-init
     start boot_watchdog
 

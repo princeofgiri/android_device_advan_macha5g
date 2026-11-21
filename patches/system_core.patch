@@ -1,0 +1,39 @@
+diff --git a/init/interface_utils.cpp b/init/interface_utils.cpp
+index 84407aa70..df918a0f7 100644
+--- a/init/interface_utils.cpp
++++ b/init/interface_utils.cpp
+@@ -44,10 +44,6 @@ Result<void> CheckInterfaceInheritanceHierarchy(const std::set<FQName>& interfac
+     std::ostringstream error_stream;
+     for (const FQName& intf : interfaces) {
+         if (hierarchy.count(intf) == 0) {
+-            error_stream << "\nInterface is not in the known set of hidl_interfaces: '"
+-                         << intf.string()
+-                         << "'. Please ensure the interface is spelled correctly and built "
+-                         << "by a hidl_interface target.";
+             continue;
+         }
+         const std::set<FQName>& required_interfaces = hierarchy.at(intf);
+@@ -112,9 +108,7 @@ Result<void> IsKnownInterface(const FQName& intf) {
+         return Error() << "No known interfaces have been loaded.";
+     }
+     if (known_interfaces->count(intf) == 0) {
+-        return Error() << "Interface is not in the known set of hidl_interfaces: '" << intf.string()
+-                       << "'. Please ensure the interface is spelled correctly and built "
+-                       << "by a hidl_interface target.";
++        return {};
+     }
+     return {};
+ }
+diff --git a/libutils/binder/RefBase.cpp b/libutils/binder/RefBase.cpp
+index 7510aa235..1fa678e23 100644
+--- a/libutils/binder/RefBase.cpp
++++ b/libutils/binder/RefBase.cpp
+@@ -805,7 +805,7 @@ RefBase::~RefBase()
+             CallStack::logStack(LOG_TAG);
+ #endif
+         } else if (strongs != 0) {
+-            LOG_ALWAYS_FATAL("RefBase: object %p with strong count %d deleted. Double owned?", this,
++            ALOGW("RefBase: object %p with strong count %d deleted. Double owned?", this,
+                              strongs);
+         }
+     }

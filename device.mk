@@ -186,9 +186,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.6.vendor \
     libhidltransport.vendor \
     libhwbinder.vendor \
-    libapexsupport.vendor \
     libeffectsconfig.vendor \
-    android.hardware.graphics.composer@2.3-service \
     android.hardware.usb@1.3.vendor \
     android.hardware.usb.gadget@1.0.vendor \
     android.hardware.usb.gadget@1.1.vendor \

@@ -86,6 +86,7 @@ PRODUCT_EXTRA_VNDK_VERSIONS := 31 32
 PRODUCT_PACKAGES += \
     libbase_shim \
     libcrypto_shim.vendor \
+    libcrypto-v33 \
     libdrm \
     libprotobuf-cpp-lite-3.9.1-vendorcompat
 

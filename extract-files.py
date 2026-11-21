@@ -98,9 +98,9 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/bin/hw/android.hardware.graphics.composer@2.4-service',
     ): blob_fixup()
         .replace_needed('android.hardware.graphics.composer@2.1-resources.so', 'android.hardware.graphics.composer@2.1-resources-v34.so'),
-    # WPA supplicant: BoringSSL CBS_* symbols shim
+    # WPA supplicant: use libcrypto-v33 for legacy OpenSSL/BoringSSL sk_* symbols
     'vendor/bin/hw/wpa_supplicant': blob_fixup()
-        .add_needed('libcrypto_shim.so'),
+        .replace_needed('libcrypto.so', 'libcrypto-v33.so'),
     # USB HAL and NFC tools: libbase Trim symbol drift
     (
         'vendor/bin/hw/android.hardware.usb@1.2-service-mediatekv2',

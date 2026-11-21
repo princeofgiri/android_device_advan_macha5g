@@ -1,3 +1,8 @@
 # Additional system-side properties for Advan Macha 5G (mt6855)
 # (hanya override; prop utama datang dari build system)
 
+# Enable ADB on boot
+persist.sys.usb.config=adb
+ro.adb.secure=0
+
+

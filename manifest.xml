@@ -591,6 +591,7 @@
         </interface>
         <fqname>IGnss/default</fqname>
     </hal>
+
     <hal format="aidl">
         <name>android.hardware.memtrack</name>
         <fqname>IMemtrack/default</fqname>

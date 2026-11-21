@@ -70,6 +70,31 @@ blob_fixups: blob_fixups_user_type = {
     # Memtrack AIDL
     'vendor/bin/hw/android.hardware.memtrack-service.mediatek': blob_fixup()
         .replace_needed('android.hardware.memtrack-V1-ndk_platform.so', 'android.hardware.memtrack-V1-ndk.so'),
+    # Sensors Multihal: libbase WriteStringToFd symbol drift
+    'vendor/bin/hw/android.hardware.sensors@2.0-service.multihal-mediatek': blob_fixup()
+        .add_needed('libbase_shim.so'),
+    # Libbase Basename/Dirname symbol drift (MTK bootctrl, nvram, sysenv, tflite)
+    (
+        'vendor/lib64/hw/android.hardware.boot@1.0-impl-1.2-mtkimpl.so',
+        'vendor/lib/hw/android.hardware.boot@1.0-impl-1.2-mtkimpl.so',
+        'vendor/lib64/libnvram.so',
+        'vendor/lib/libnvram.so',
+        'vendor/lib64/libsysenv.so',
+        'vendor/lib/libsysenv.so',
+        'vendor/lib64/libtflite_mtk.so',
+        'vendor/lib/libtflite_mtk.so',
+    ): blob_fixup()
+        .add_needed('libbase_shim.so'),
+    # WPA supplicant: BoringSSL CBS_* symbols shim
+    'vendor/bin/hw/wpa_supplicant': blob_fixup()
+        .add_needed('libcrypto_shim.so'),
+    # USB HAL and NFC tools: libbase Trim symbol drift
+    (
+        'vendor/bin/hw/android.hardware.usb@1.2-service-mediatekv2',
+        'vendor/bin/nfcstackp-vendor',
+        'vendor/bin/STFlashTool',
+    ): blob_fixup()
+        .add_needed('libbase_shim.so'),
     # Power AIDL
     ('vendor/bin/hw/vendor.mediatek.hardware.mtkpower@1.0-service', 'vendor/lib64/android.hardware.power-service-mediatek.so'): blob_fixup()
         .replace_needed('android.hardware.power-V2-ndk_platform.so', 'android.hardware.power-V2-ndk.so'),

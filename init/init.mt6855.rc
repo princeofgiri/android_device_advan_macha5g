@@ -1,18 +1,14 @@
 # MTK platform .rc configure
 
-import ${ro.vendor.rc}init.connectivity.rc
-import ${ro.vendor.rc}init.mt6855.usb.rc
+import /vendor/etc/init/hw/init.connectivity.rc
+import /vendor/etc/init/hw/init.mt6855.usb.rc
 import /vendor/etc/init/hw/init.project.rc
-import /system_ext/etc/init/hw/init.aee.rc
-import /FWUpgradeInit.rc
 import /vendor/etc/init/hw/init.aee.rc
-import ${ro.vendor.rc}init.volte.rc
-import ${ro.vendor.rc}init.mal.rc
-import ${ro.vendor.rc}${ro.vendor.init.sensor.rc}
-import ${ro.vendor.rc}init.cgroup.rc
+import /vendor/etc/init/hw/init.sensor_2_0.rc
+import /vendor/etc/init/hw/init.cgroup.rc
 
 # init.modem.rc must be the LAST rc file because vold.post_fs_data_done is set in it
-import ${ro.vendor.rc}init.modem.rc
+import /vendor/etc/init/hw/init.modem.rc
 # *** DO NOT import the new rc file after this line ***
 
 on early-init
@@ -110,6 +106,7 @@ on charger
     start fuelgauged_nvram
 
     chown system system /sys/class/leds/lcd-backlight/brightness
+    write /sys/class/leds/lcd-backlight/brightness 160
     chown system system /sys/class/leds/red/brightness
     chown system system /sys/class/leds/green/brightness
 #hjw  start
@@ -139,7 +136,7 @@ on fs
     write /proc/bootprof "INIT:Mount_START"
     write /sys/kernel/tracing/trace_marker "B|1|Mount"
     mount_all --early
-    exec /system/bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/by-name/userdata
+    # exec /system/bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/by-name/userdata
     write /sys/kernel/tracing/trace_marker "E"
     write /proc/bootprof "INIT:Mount_END"
 
@@ -149,7 +146,7 @@ on fs
 
 on late-fs
     write /proc/bootprof "INIT:late-fs"
-    wait_for_prop hwservicemanager.ready "true"
+    # wait_for_prop hwservicemanager.ready "true"
 
     write /proc/bootprof "INIT:Mount_START --late"
     write /sys/kernel/tracing/trace_marker "B|1|Mount late"
@@ -197,7 +194,7 @@ on post-fs
 
 on post-fs-data
     write /proc/bootprof "INIT:post-fs-data"
-    wait_for_prop vendor.all.modules.ready 1
+    # wait_for_prop vendor.all.modules.ready 1
     write /proc/bootprof "modprobe: Load_Module_DONE"
 
     # Disable watermark boost
@@ -798,6 +795,8 @@ on boot
 
     chmod 0664 /sys/class/leds/lcd-backlight/brightness
     chown system system /sys/class/leds/lcd-backlight/brightness
+    write /sys/class/leds/lcd-backlight/brightness 160
+    write /sys/class/leds/lcd-backlight/brightness 160
 
     chown system system /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base
     chmod 0660 /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base

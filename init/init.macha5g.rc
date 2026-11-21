@@ -1,1 +1,22 @@
 # Device-specific init for Advan Macha 5G (mt6855)
+
+# Boot watchdog: If boot_completed is not reached within 120 seconds,
+# reboot into recovery mode for debugging.
+service boot_watchdog /system/bin/sh -c "sleep 300; echo 'Boot watchdog: Timeout waiting for sys.boot_completed, rebooting to recovery...' > /dev/kmsg; /system/bin/reboot recovery"
+    class core
+    user root
+    group root
+    disabled
+    oneshot
+
+on late-init
+    start boot_watchdog
+
+on post-fs-data
+    setprop keystore.module_hash.sent true
+    setprop odsign.key.done 1
+    setprop odsign.verification.done 1
+    start boot_watchdog
+
+on property:sys.boot_completed=1
+    stop boot_watchdog

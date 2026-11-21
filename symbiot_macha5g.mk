@@ -3,8 +3,12 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# Disable legacy HIDL CAS HAL and vendor dumpsys before base_vendor.mk is included
+TARGET_REQUIRES_HIDL_CAS_HAL := false
+TARGET_EXCLUDE_DUMPSYS_VENDOR := true
+
 # Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit from macha5g device

@@ -86,7 +86,8 @@ PRODUCT_EXTRA_VNDK_VERSIONS := 31 32
 PRODUCT_PACKAGES += \
     libbase_shim \
     libcrypto_shim \
-    libdrm
+    libdrm \
+    libprotobuf-cpp-lite-3.9.1-vendorcompat
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
@@ -143,6 +144,7 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0.vendor \
     android.hardware.sensors@2.0.vendor \
     android.hardware.sensors@2.1.vendor \
+    android.hardware.sensors@2.0-ScopedWakelock.vendor \
     android.frameworks.sensorservice@1.0.vendor \
     android.hardware.audio@6.0.vendor \
     android.hardware.audio@7.0.vendor \
@@ -204,6 +206,7 @@ PRODUCT_PACKAGES += \
     android.hardware.radio@1.3.vendor \
     android.hardware.radio@1.4.vendor \
     android.hardware.radio@1.5.vendor \
+    android.hardware.radio@1.6.vendor \
     android.hardware.radio.config@1.0.vendor \
     android.hardware.radio.config@1.1.vendor \
     android.hardware.radio.config@1.2.vendor \

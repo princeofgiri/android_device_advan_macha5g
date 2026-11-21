@@ -113,6 +113,18 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('android.hardware.power-V2-ndk_platform.so', 'android.hardware.power-V2-ndk.so'),
     'vendor/lib64/libpowerhal.so': blob_fixup()
         .sig_replace('e0 03 80 3d 68 00 00 36', '28 00 80 52 c8 02 1b 39'),
+    # Minijail: libbase WriteStringToFd symbol drift
+    (
+        'vendor/lib64/libavservices_minijail_vendor.so',
+        'vendor/lib/libavservices_minijail_vendor.so',
+    ): blob_fixup()
+        .add_needed('libbase_shim.so'),
+    # GPS daemons: BoringSSL CBS_* symbols shim
+    (
+        'vendor/bin/mnld',
+        'vendor/bin/mtk_agpsd',
+    ): blob_fixup()
+        .add_needed('libcrypto_shim.so'),
     # Vibrator AIDL
     'vendor/bin/hw/android.hardware.vibrator-service.mediatek': blob_fixup()
         .replace_needed('android.hardware.vibrator-V2-ndk_platform.so', 'android.hardware.vibrator-V2-ndk.so'),

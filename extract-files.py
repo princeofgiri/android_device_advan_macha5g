@@ -91,6 +91,13 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/hw/hwcomposer.mtk_fold.so',
     ): blob_fixup()
         .add_needed('libprocessgroup_shim.so'),
+    # HWComposer service: use composer@2.1-resources-v34 to match prebuilt ABI
+    (
+        'vendor/bin/hw/android.hardware.graphics.composer@2.1-service',
+        'vendor/bin/hw/android.hardware.graphics.composer@2.3-service',
+        'vendor/bin/hw/android.hardware.graphics.composer@2.4-service',
+    ): blob_fixup()
+        .replace_needed('android.hardware.graphics.composer@2.1-resources.so', 'android.hardware.graphics.composer@2.1-resources-v34.so'),
     # WPA supplicant: BoringSSL CBS_* symbols shim
     'vendor/bin/hw/wpa_supplicant': blob_fixup()
         .add_needed('libcrypto_shim.so'),

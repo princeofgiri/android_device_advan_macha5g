@@ -124,6 +124,7 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.2.vendor \
     android.hardware.graphics.composer@2.3.vendor \
     android.hardware.graphics.composer@2.1-resources.vendor \
+    android.hardware.graphics.composer@2.1-resources-v34.vendor \
     android.hardware.graphics.composer@2.2-resources.vendor \
     android.hardware.ir@1.0.vendor \
     android.hardware.media.c2@1.0.vendor \

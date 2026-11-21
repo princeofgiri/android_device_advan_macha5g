@@ -220,6 +220,11 @@ PRODUCT_PACKAGES += \
     android.system.keystore2-V1-ndk.vendor \
     android.hardware.security.keymint-V1-ndk.vendor
 
+# Linker configuration
+PRODUCT_VENDOR_LINKER_CONFIG_FRAGMENTS += \
+    device/advan/macha5g/linker.config.json
+
+
 
 
 

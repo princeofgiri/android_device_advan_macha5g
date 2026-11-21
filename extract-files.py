@@ -85,6 +85,12 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib/libtflite_mtk.so',
     ): blob_fixup()
         .add_needed('libbase_shim.so'),
+    # HWComposer MTK: SetTaskProfiles shim
+    (
+        'vendor/lib64/hw/hwcomposer.mtk_common.so',
+        'vendor/lib64/hw/hwcomposer.mtk_fold.so',
+    ): blob_fixup()
+        .add_needed('libprocessgroup_shim.so'),
     # WPA supplicant: BoringSSL CBS_* symbols shim
     'vendor/bin/hw/wpa_supplicant': blob_fixup()
         .add_needed('libcrypto_shim.so'),

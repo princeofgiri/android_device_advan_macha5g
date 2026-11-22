@@ -85,10 +85,13 @@ PRODUCT_EXTRA_VNDK_VERSIONS := 31 32
 # Compatibility shims
 PRODUCT_PACKAGES += \
     libbase_shim \
+    libcamera_metadata_shim \
     libcrypto_shim.vendor \
     libcrypto-v33 \
     libdrm \
-    libprotobuf-cpp-lite-3.9.1-vendorcompat
+    libprotobuf-cpp-lite-3.9.1-vendorcompat \
+    libstagefright_foundation-v33 \
+    libstagefright_foundation-v33.vendor
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \

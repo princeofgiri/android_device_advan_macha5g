@@ -190,3 +190,10 @@
 
 #MTK In-House TEE
 /dev/ttyACM0              0660   radio      radio
+
+# Sensors
+/dev/hf_manager           0666   system     system
+/dev/pix_manager          0666   system     system
+
+# Fingerprint
+/dev/goodix_fp            0666   system     system

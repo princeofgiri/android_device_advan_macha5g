@@ -18,6 +18,10 @@ on late-init
     start boot_watchdog
 
 on post-fs-data
+    # Fingerprint data directory for Goodix
+    mkdir /data/gf_data 0770 system system
+    restorecon /data/gf_data
+
     setprop keystore.module_hash.sent true
     setprop odsign.key.done 1
     setprop odsign.verification.done 1

@@ -223,7 +223,10 @@ PRODUCT_PACKAGES += \
     android.hardware.wifi.supplicant@1.4.vendor \
     android.system.wifi.keystore@1.0.vendor \
     android.system.keystore2-V1-ndk.vendor \
-    android.hardware.security.keymint-V1-ndk.vendor
+    android.hardware.security.keymint-V1-ndk.vendor \
+    libssl.vendor \
+    libeffects \
+    libeffectproxy
 
 # Linker configuration
 PRODUCT_VENDOR_LINKER_CONFIG_FRAGMENTS += \

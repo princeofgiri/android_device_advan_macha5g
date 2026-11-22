@@ -1236,7 +1236,7 @@ vendor/lib/libcustom_nvram.so
 vendor/lib/libcvsd_mtk.so
 vendor/lib/libdecrypt.so
 vendor/lib/libdynamiclog.so
-vendor/lib/libeffects.so
+# vendor/lib/libeffects.so (use open-source AOSP build)
 vendor/lib/libfgauge_gm30.so
 vendor/lib/libfile_op.so
 vendor/lib/libformatter.so
@@ -1551,7 +1551,7 @@ vendor/lib/soundfx/libaudiopreprocessing_mtk.so
 vendor/lib/soundfx/libbundlewrapper.so
 vendor/lib/soundfx/libdownmix.so
 vendor/lib/soundfx/libdynproc.so
-vendor/lib/soundfx/libeffectproxy.so
+# vendor/lib/soundfx/libeffectproxy.so (use open-source AOSP build)
 vendor/lib/soundfx/libhapticgenerator.so
 vendor/lib/soundfx/libldnhncr.so
 vendor/lib/soundfx/libreverbwrapper.so
@@ -1822,7 +1822,7 @@ vendor/lib64/libcustom_nvram.so
 vendor/lib64/libcvsd_mtk.so
 vendor/lib64/libdecrypt.so
 vendor/lib64/libdynamiclog.so
-vendor/lib64/libeffects.so
+# vendor/lib64/libeffects.so (use open-source AOSP build)
 vendor/lib64/libem_sensor_jni.so;SYMLINK=vendor/app/SensorHub/lib/arm64/libem_sensor_jni.so
 vendor/lib64/libfft_vendor.so
 vendor/lib64/libfgauge_gm30.so
@@ -2322,7 +2322,7 @@ vendor/lib64/soundfx/libaudiopreprocessing_mtk.so
 vendor/lib64/soundfx/libbundlewrapper.so
 vendor/lib64/soundfx/libdownmix.so
 vendor/lib64/soundfx/libdynproc.so
-vendor/lib64/soundfx/libeffectproxy.so
+# vendor/lib64/soundfx/libeffectproxy.so (use open-source AOSP build)
 vendor/lib64/soundfx/libhapticgenerator.so
 vendor/lib64/soundfx/libldnhncr.so
 vendor/lib64/soundfx/libreverbwrapper.so

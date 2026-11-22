@@ -37,4 +37,4 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     SystemName=ADVAN_MACHA
 
 # SymbiotOS: persempit PRODUCT_LOCALES (pola fogos 0293)
-PRODUCT_LOCALES := en
+PRODUCT_LOCALES := en_US in_ID jv_Java_ID

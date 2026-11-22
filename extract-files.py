@@ -135,7 +135,11 @@ blob_fixups: blob_fixups_user_type = {
     ('vendor/lib64/libkeystore-engine-wifi-hidl.so', 'vendor/lib/libkeystore-engine-wifi-hidl.so'): blob_fixup()
         .replace_needed('android.system.keystore2-V1-ndk_platform.so', 'android.system.keystore2-V1-ndk.so'),
     # Biometrics fingerprint AIDL
-    ('vendor/bin/hw/vendor.pri.hardware.biometrics.fingerprint-service', 'vendor/lib64/android.hardware.biometrics.fingerprint-V1-ndk_platform.so'): blob_fixup()
+    'vendor/bin/hw/vendor.pri.hardware.biometrics.fingerprint-service': blob_fixup()
+        .replace_needed('android.hardware.biometrics.common-V1-ndk_platform.so', 'android.hardware.biometrics.common-V1-ndk.so')
+        .replace_needed('android.hardware.biometrics.fingerprint-V1-ndk_platform.so', 'android.hardware.biometrics.fingerprint-V1-ndk.so')
+        .binary_regex_replace(b'ADVAN_MACHA\x00', b'macha5g\x00\x00\x00\x00\x00'),
+    'vendor/lib64/android.hardware.biometrics.fingerprint-V1-ndk_platform.so': blob_fixup()
         .replace_needed('android.hardware.biometrics.common-V1-ndk_platform.so', 'android.hardware.biometrics.common-V1-ndk.so')
         .replace_needed('android.hardware.biometrics.fingerprint-V1-ndk_platform.so', 'android.hardware.biometrics.fingerprint-V1-ndk.so'),
     # MTK factory test binary

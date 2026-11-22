@@ -153,12 +153,11 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libstagefright_foundation-v33.so')
         .replace_needed('libalsautils.so', 'libalsautils-v31.so')
         .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
-    # Camera provider: libutils ABI drift (X1-style workaround)
+    # Camera provider: libcamera_metadata shim
     (
         'vendor/lib64/hw/android.hardware.camera.provider@2.6-impl-mediatek.so',
         'vendor/lib64/hw/mt6855/android.hardware.camera.provider@2.6-impl-mediatek.so',
     ): blob_fixup()
-        .replace_needed('libutils.so', 'libutils-v32.so')
         .add_needed('libcamera_metadata_shim.so'),
     # PQ impl: libutils + libtinyxml2 ABI drift
     (

@@ -11,5 +11,11 @@
         <item>2158</item>
         <item>95</item>
     </integer-array>
+
+    <!-- Type of the UDFPS sensor: 0 = DEFAULT, 1 = TOUCH, 2 = OPTICAL, 3 = ULTRASONIC -->
+    <integer name="config_udfps_sensor_type">2</integer>
+
+    <!-- Whether the UDFPS sensor requires illumination -->
+    <bool name="config_supportsUdfpsIllumination">true</bool>
 </resources>
 

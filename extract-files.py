@@ -138,7 +138,8 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/bin/hw/vendor.pri.hardware.biometrics.fingerprint-service': blob_fixup()
         .replace_needed('android.hardware.biometrics.common-V1-ndk_platform.so', 'android.hardware.biometrics.common-V1-ndk.so')
         .replace_needed('android.hardware.biometrics.fingerprint-V1-ndk_platform.so', 'android.hardware.biometrics.fingerprint-V1-ndk.so')
-        .binary_regex_replace(b'ADVAN_MACHA\x00', b'macha5g\x00\x00\x00\x00\x00'),
+        .binary_regex_replace(b'ADVAN_MACHA\x00', b'macha5g\x00\x00\x00\x00\x00')
+        .binary_regex_replace(b'\x07\x02\x00\x94\xc0\x0c\x00\x36', b'\x07\x02\x00\x94\x1f\x20\x03\xd5'),
     'vendor/lib64/android.hardware.biometrics.fingerprint-V1-ndk_platform.so': blob_fixup()
         .replace_needed('android.hardware.biometrics.common-V1-ndk_platform.so', 'android.hardware.biometrics.common-V1-ndk.so')
         .replace_needed('android.hardware.biometrics.fingerprint-V1-ndk_platform.so', 'android.hardware.biometrics.fingerprint-V1-ndk.so'),
@@ -157,12 +158,19 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libstagefright_foundation-v33.so')
         .replace_needed('libalsautils.so', 'libalsautils-v31.so')
         .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
-    # Camera provider: libcamera_metadata shim
+    # Camera provider & MTK camera app: libutils Thread::run shim
     (
         'vendor/lib64/hw/android.hardware.camera.provider@2.6-impl-mediatek.so',
         'vendor/lib64/hw/mt6855/android.hardware.camera.provider@2.6-impl-mediatek.so',
     ): blob_fixup()
         .add_needed('libcamera_metadata_shim.so'),
+    'vendor/bin/hw/mt6855/camerahalserver': blob_fixup()
+        .add_needed('libcam_utils_shim.so'),
+    'vendor/lib64/mt6855/libmtkcam_device3_app.so': blob_fixup()
+        .replace_needed('libutils.so', 'libcam_utils_shim.so'),
+    'vendor/lib64/mt6855/libdip_drv.so': blob_fixup()
+        .binary_regex_replace(b'/dev/camera-dip\x00', b'/dev/null\x00\x00\x00\x00\x00\x00\x00')
+        .binary_regex_replace(b'\x96\x00\x00\x36\x08\x00\x80\xd2', b'\x67\x00\x00\x14\x08\x00\x80\xd2'),
     # PQ impl: libutils + libtinyxml2 ABI drift
     (
         'vendor/lib64/hw/vendor.mediatek.hardware.pq@2.15-impl.so',

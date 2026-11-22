@@ -196,6 +196,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.5.vendor \
     android.hardware.camera.provider@2.6.vendor \
     FrameworksResOverlayMacha5g \
+    SystemUIOverlayMacha5g \
     libhidltransport.vendor \
     libhwbinder.vendor \
     libeffectsconfig.vendor \
@@ -233,11 +234,17 @@ PRODUCT_PACKAGES += \
     android.hardware.security.keymint-V1-ndk.vendor \
     libssl.vendor \
     libeffects \
-    libeffectproxy
+    libeffectproxy \
+    libcam_utils_shim
 
 # Linker configuration
 PRODUCT_VENDOR_LINKER_CONFIG_FRAGMENTS += \
     device/advan/macha5g/linker.config.json
+
+# Enable ADB via network by default
+PRODUCT_SYSTEM_PROPERTIES += \
+    service.adb.tcp.port=5555
+
 
 
 

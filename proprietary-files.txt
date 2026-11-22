@@ -2443,7 +2443,6 @@ vendor_dlkm/lib/modules/ccci_util_lib.ko
 vendor_dlkm/lib/modules/ccmni.ko
 vendor_dlkm/lib/modules/charger_cooling.ko
 vendor_dlkm/lib/modules/clk-dbg-mt6855.ko
-vendor_dlkm/lib/modules/clk-disable-unused.ko
 vendor_dlkm/lib/modules/clk-fmeter-mt6855.ko
 vendor_dlkm/lib/modules/cmdq-sec-drv.ko
 vendor_dlkm/lib/modules/cmdq-test.ko
@@ -2508,7 +2507,6 @@ vendor_dlkm/lib/modules/mtk-lpm-dbg-mt6855.ko
 vendor_dlkm/lib/modules/mtk-lpm-plat-v1.ko
 vendor_dlkm/lib/modules/mtk-lpm.ko
 vendor_dlkm/lib/modules/mtk-mbox.ko
-vendor_dlkm/lib/modules/mtk-pm-domain-disable-unused.ko
 vendor_dlkm/lib/modules/mtk-pmic-oc-debug.ko
 vendor_dlkm/lib/modules/mtk-pwm.ko
 vendor_dlkm/lib/modules/mtk-scp-audio.ko

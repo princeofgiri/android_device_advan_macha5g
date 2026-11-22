@@ -65,7 +65,7 @@ BOARD_RAMDISK_USE_LZ4     := true
 
 # Stock vendor_boot vendor_cmdline. With BOARD_USES_GENERIC_KERNEL_IMAGE this
 # is written to vendor_boot, while boot.img keeps the empty GKI cmdline.
-BOARD_KERNEL_CMDLINE += bootopt=64S3,32N2,64N2 androidboot.selinux=permissive panic=5
+BOARD_KERNEL_CMDLINE += bootopt=64S3,32N2,64N2 androidboot.selinux=permissive panic=5 clk_ignore_unused pd_ignore_unused
 
 BOARD_KERNEL_IMAGE_NAME := Image.gz
 BOARD_USES_GENERIC_KERNEL_IMAGE := true

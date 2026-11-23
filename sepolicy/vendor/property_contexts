@@ -1,1 +1,2 @@
-# Device-specific vendor property contexts (empty; base contexts in sepolicy_vndr)
+# Device-specific vendor property contexts (base contexts in sepolicy_vndr)
+vendor.debug.screenflash.              u:object_r:vendor_mtk_camera_prop:s0

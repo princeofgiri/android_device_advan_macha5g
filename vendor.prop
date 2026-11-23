@@ -84,8 +84,14 @@ ro.vendor.mtk_f2fs_enable=1
 ro.vendor.mtk_tb_wifi_3g_mode=0
 ro.vendor.mtk_eccci_c2k=1
 ro.vendor.mtk_audio_alac_support=1
-vendor.camera.mdp.dre.enable=1
-vendor.camera.mdp.cz.enable=1
+# Camera MDP post-processing tuning (disable DRE/CZ to prevent green tint in preview)
+vendor.camera.mdp.dre.enable=0
+vendor.camera.mdp.cz.enable=0
+camera.mdp.dre.enable=0
+camera.mdp.cz.enable=0
+
+# HWC color handling for YUV preview layers
+vendor.debug.hwc.use_dataspace_for_yuv=0
 persist.vendor.camera3.pipeline.bufnum.min.high_ram.imgo=7
 persist.vendor.camera3.pipeline.bufnum.min.low_ram.imgo=6
 persist.vendor.camera3.pipeline.bufnum.base.imgo=4

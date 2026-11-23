@@ -1,0 +1,27 @@
+diff --git a/app/src/main/java/org/lineageos/aperture/CameraActivity.kt b/app/src/main/java/org/lineageos/aperture/CameraActivity.kt
+index edae6e0..6872317 100644
+--- a/app/src/main/java/org/lineageos/aperture/CameraActivity.kt
++++ b/app/src/main/java/org/lineageos/aperture/CameraActivity.kt
+@@ -1386,6 +1386,10 @@ open class CameraActivity : AppCompatActivity(R.layout.activity_camera) {
+ 
+         permissionsManager.permissionStateFlow(Permission.CAMERA).collect { permissionState ->
+             if (permissionState == PermissionState.GRANTED && !initialized) {
++                if (resources.getBoolean(R.bool.config_forceCompatibleMode)) {
++                    viewFinder.implementationMode = PreviewView.ImplementationMode.COMPATIBLE
++                }
++
+                 // Attach CameraController to PreviewView
+                 viewFinder.controller = viewModel.cameraController
+ 
+diff --git a/app/src/main/res/values/config.xml b/app/src/main/res/values/config.xml
+index 1920aa1..5008702 100644
+--- a/app/src/main/res/values/config.xml
++++ b/app/src/main/res/values/config.xml
+@@ -84,4 +84,7 @@
+     <!-- Whether we should use high resolution output size or not.
+          See: StreamConfigurationMap.getHighResolutionOutputSizes() for more info. -->
+     <bool name="config_enableHighResolution">true</bool>
++
++    <!-- Whether to force compatible implementation mode (TextureView) for camera preview. -->
++    <bool name="config_forceCompatibleMode">false</bool>
+ </resources>

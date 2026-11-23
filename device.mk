@@ -197,6 +197,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.6.vendor \
     FrameworksResOverlayMacha5g \
     SystemUIOverlayMacha5g \
+    ApertureOverlayMacha5g \
     libhidltransport.vendor \
     libhwbinder.vendor \
     libeffectsconfig.vendor \

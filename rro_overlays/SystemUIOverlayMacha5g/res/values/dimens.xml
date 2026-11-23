@@ -6,5 +6,7 @@
 <resources>
     <!-- Margin for keyguard indication area to avoid overlapping UDFPS sensor -->
     <dimen name="keyguard_indication_margin_bottom">160dp</dimen>
-</resources>
 
+    <!-- Pixel pitch in micrometers for 394 DPI display (25400 / 394.4 ≈ 64.4) -->
+    <item name="pixel_pitch" format="float" type="dimen">64.4</item>
+</resources>

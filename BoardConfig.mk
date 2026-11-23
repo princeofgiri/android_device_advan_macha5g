@@ -229,3 +229,9 @@ TARGET_REQUIRES_HIDL_CAS_HAL := false
 
 # Inherit the proprietary files
 -include vendor/advan/macha5g/BoardConfigVendor.mk
+
+# Use device-specific USB gadget rc
+SOONG_CONFIG_NAMESPACES += mediatek_gadget
+SOONG_CONFIG_mediatek_gadget += use_custom_usb_gadget_rc
+SOONG_CONFIG_mediatek_gadget_use_custom_usb_gadget_rc := true
+

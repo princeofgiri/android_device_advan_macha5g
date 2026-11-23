@@ -18,6 +18,10 @@ on late-init
     start boot_watchdog
 
 on post-fs-data
+    # Awinic audio effect 64-bit symlink for hardcoded path in audio HAL
+    mkdir /vendor/lib/hw 0755 root root
+    symlink /vendor/lib64/hw/awinic.audio.effect.so /vendor/lib/hw/awinic.audio.effect.so
+
     # MTK MDP permissions
     chmod 0666 /dev/mtk_mdp
     chmod 0666 /dev/mdp_sync

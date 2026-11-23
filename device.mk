@@ -87,7 +87,6 @@ PRODUCT_PACKAGES += \
     libbase_shim \
     libcamera_metadata_shim \
     libcrypto_shim.vendor \
-    libcrypto-v33 \
     libdrm \
     libprotobuf-cpp-lite-3.9.1-vendorcompat \
     libstagefright_foundation-v33 \

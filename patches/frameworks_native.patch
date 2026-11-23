@@ -15,3 +15,38 @@ index 05fbc148d2..47f365d14b 100644
          mBufferItemConsumer->resizeFrameEventHistory(newSize);
      }
  }
+diff --git a/services/inputflinger/reader/EventHub.cpp b/services/inputflinger/reader/EventHub.cpp
+index c6054e7b80..96b9fde4b5 100644
+--- a/services/inputflinger/reader/EventHub.cpp
++++ b/services/inputflinger/reader/EventHub.cpp
+@@ -425,8 +425,10 @@ static std::unordered_map<int32_t /*batteryId*/, RawBatteryInfo> readBatteryConf
+                 info.flags |= it->second;
+             }
+         }
+-        batteryInfos.insert_or_assign(info.id, info);
+-        ALOGD("configureBatteryLocked rawBatteryId %d name %s", info.id, info.name.c_str());
++        if (info.flags.any()) {
++            batteryInfos.insert_or_assign(info.id, info);
++            ALOGD("configureBatteryLocked rawBatteryId %d name %s", info.id, info.name.c_str());
++        }
+     }
+     return batteryInfos;
+ }
+@@ -1838,7 +1840,7 @@ std::optional<int32_t> EventHub::getBatteryCapacity(RawDeviceId deviceId, int32_
+ 
+         const auto& infos = getBatteryInfoLocked(deviceId);
+         auto it = infos.find(batteryId);
+-        if (it == infos.end()) {
++        if (it == infos.end() || !it->second.flags.test(InputBatteryClass::CAPACITY)) {
+             return std::nullopt;
+         }
+         batteryPath = it->second.path;
+@@ -1879,7 +1881,7 @@ std::optional<int32_t> EventHub::getBatteryStatus(RawDeviceId deviceId, int32_t
+ 
+         const auto& infos = getBatteryInfoLocked(deviceId);
+         auto it = infos.find(batteryId);
+-        if (it == infos.end()) {
++        if (it == infos.end() || !it->second.flags.test(InputBatteryClass::STATUS)) {
+             return std::nullopt;
+         }
+         batteryPath = it->second.path;

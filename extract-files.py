@@ -140,8 +140,8 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('android.hardware.biometrics.fingerprint-V1-ndk_platform.so', 'android.hardware.biometrics.fingerprint-V1-ndk.so')
         .binary_regex_replace(b'ADVAN_MACHA\x00', b'macha5g\x00\x00\x00\x00\x00')
         .binary_regex_replace(b'\x07\x02\x00\x94\xc0\x0c\x00\x36', b'\x07\x02\x00\x94\x1f\x20\x03\xd5')
-        .binary_regex_replace(b'\x88\xa2\x0f\x71\xeb\x05\x00\x54\xf5\x00\x80\x52\xf4\x03\x08\x2a\x35\x00\x00\x14',
-                              b'\x88\xa2\x0f\x71\xeb\x05\x00\x54\x54\x00\x00\x14\xf4\x03\x08\x2a\x35\x00\x00\x14'),
+        .binary_regex_replace(b'\xf5\x00\x80\x52\xf4\x03\x08\x2a\x35\x00\x00\x14',
+                              b'\xf5\x00\x80\x52\xf4\x03\x08\x2a\x52\x00\x00\x14'),
     'vendor/lib64/android.hardware.biometrics.fingerprint-V1-ndk_platform.so': blob_fixup()
         .replace_needed('android.hardware.biometrics.common-V1-ndk_platform.so', 'android.hardware.biometrics.common-V1-ndk.so')
         .replace_needed('android.hardware.biometrics.fingerprint-V1-ndk_platform.so', 'android.hardware.biometrics.fingerprint-V1-ndk.so'),

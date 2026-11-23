@@ -170,9 +170,6 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libcam_utils_shim.so'),
     'vendor/lib64/mt6855/libmtkcam_device3_app.so': blob_fixup()
         .replace_needed('libutils.so', 'libcam_utils_shim.so'),
-    'vendor/lib64/mt6855/libdip_drv.so': blob_fixup()
-        .binary_regex_replace(b'/dev/camera-dip\x00', b'/dev/null\x00\x00\x00\x00\x00\x00\x00')
-        .binary_regex_replace(b'\x96\x00\x00\x36\x08\x00\x80\xd2', b'\x67\x00\x00\x14\x08\x00\x80\xd2'),
     # PQ impl: libutils + libtinyxml2 ABI drift
     (
         'vendor/lib64/hw/vendor.mediatek.hardware.pq@2.15-impl.so',

@@ -2427,11 +2427,14 @@ vendor_dlkm/lib/modules/c2k_usb_f_via_gps.ko
 vendor_dlkm/lib/modules/c2k_usb_f_via_modem.ko
 vendor_dlkm/lib/modules/c2k_usb_f_via_pcv.ko
 vendor_dlkm/lib/modules/cam_qos.ko
+vendor_dlkm/lib/modules/camera_dip_isp6s.ko
 vendor_dlkm/lib/modules/camera_eeprom.ko
 vendor_dlkm/lib/modules/camera_fdvt_isp51.ko
 vendor_dlkm/lib/modules/camera_isp.ko
 vendor_dlkm/lib/modules/camera_mem.ko
+vendor_dlkm/lib/modules/camera_mfb_isp6s.ko
 vendor_dlkm/lib/modules/camera_rsc_isp60.ko
+vendor_dlkm/lib/modules/camera_wpe_isp6s.ko
 vendor_dlkm/lib/modules/ccci_auxadc.ko
 vendor_dlkm/lib/modules/ccci_ccif.ko
 vendor_dlkm/lib/modules/ccci_dpmaif.ko

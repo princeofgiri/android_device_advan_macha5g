@@ -18,6 +18,12 @@ on late-init
     start boot_watchdog
 
 on post-fs-data
+    # MTK MDP permissions
+    chmod 0666 /dev/mtk_mdp
+    chmod 0666 /dev/mdp_sync
+    chown system system /dev/mtk_mdp
+    chown system system /dev/mdp_sync
+
     # Fingerprint data directory for Goodix
     mkdir /data/gf_data 0770 system system
     restorecon /data/gf_data
@@ -41,3 +47,8 @@ on post-fs-data
 
 on property:sys.boot_completed=1
     stop boot_watchdog
+
+on boot
+    # MediaTek camera ISP & DIP SMI power domain keep alive
+    write /sys/devices/platform/soc/soc:smi_pd_dip1/power/control on
+    write /sys/devices/platform/soc/soc:smi_pd_isp_main/power/control on

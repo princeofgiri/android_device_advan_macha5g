@@ -206,5 +206,9 @@
 /dev/hf_manager           0666   system     system
 /dev/pix_manager          0666   system     system
 
+# MDP
+/dev/mtk_mdp              0666   system     system
+/dev/mdp_sync             0666   system     system
+
 # Fingerprint
 /dev/goodix_fp            0666   system     system

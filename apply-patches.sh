@@ -50,6 +50,7 @@ apply_patch() {
 apply_patch "frameworks/native" "${PATCHES_DIR}/frameworks_native.patch"
 apply_patch "system/core" "${PATCHES_DIR}/system_core.patch"
 apply_patch "frameworks/av" "${PATCHES_DIR}/frameworks_av.patch"
+apply_patch "hardware/lineage/compat" "${PATCHES_DIR}/hardware_lineage_compat.patch"
 apply_patch "packages/modules/common" "${PATCHES_DIR}/packages_modules_common.patch"
 apply_patch "packages/apps/Aperture" "${PATCHES_DIR}/packages_apps_Aperture.patch"
 

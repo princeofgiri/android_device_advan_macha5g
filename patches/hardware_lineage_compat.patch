@@ -1,0 +1,40 @@
+diff --git a/Android.bp b/Android.bp
+index d87d5d7..b08c9c5 100644
+--- a/Android.bp
++++ b/Android.bp
+@@ -252,6 +252,9 @@ cc_library {
+     srcs: [
+         "libcrypto/cbs.c",
+     ],
++    shared_libs: [
++        "libcrypto",
++    ],
+     system_ext_specific: true,
+     vendor_available: true,
+ }
+diff --git a/libcrypto/cbs.c b/libcrypto/cbs.c
+index d0315ec..d4ae91d 100644
+--- a/libcrypto/cbs.c
++++ b/libcrypto/cbs.c
+@@ -5,6 +5,7 @@
+  */
+ 
+ #include <stdint.h>
++#include <stddef.h>
+ 
+ // From <openssl/bytestring.h>
+ struct cbs_st {
+@@ -26,3 +27,13 @@ const uint8_t* CBS_data(const CBS* cbs) {
+ size_t CBS_len(const CBS* cbs) {
+     return cbs->len;
+ }
++
++// Stack symbol compatibility for legacy blobs (wpa_supplicant)
++struct stack_st;
++typedef struct stack_st OPENSSL_STACK;
++
++extern OPENSSL_STACK *OPENSSL_sk_dup(const OPENSSL_STACK *sk);
++
++OPENSSL_STACK *sk_dup(const OPENSSL_STACK *sk) {
++    return OPENSSL_sk_dup(sk);
++}

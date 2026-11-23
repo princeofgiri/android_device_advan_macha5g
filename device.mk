@@ -107,6 +107,7 @@ PRODUCT_PACKAGES += \
 
 # HAL & VNDK Compat Packages
 PRODUCT_PACKAGES += \
+    android.hardware.ir-service.example \
     android.hardware.light-V1-ndk \
     android.hardware.biometrics.fingerprint-V1-ndk.vendor \
     android.hardware.bluetooth@1.0.vendor \

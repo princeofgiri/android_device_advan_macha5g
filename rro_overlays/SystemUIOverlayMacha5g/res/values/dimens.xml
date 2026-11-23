@@ -9,4 +9,7 @@
 
     <!-- Pixel pitch in micrometers for 394 DPI display (25400 / 394.4 ≈ 64.4) -->
     <item name="pixel_pitch" format="float" type="dimen">64.4</item>
+
+    <!-- UDFPS icon size in micrometers to match sensor size (184px * 64.4 ≈ 11850) -->
+    <item name="udfps_icon_size" format="float" type="dimen">11850</item>
 </resources>

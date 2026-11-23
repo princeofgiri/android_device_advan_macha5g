@@ -9,68 +9,67 @@
     android:viewportWidth="100"
     android:viewportHeight="100">
 
-    <!-- Upper Cyber Arc (Cyan Glow) -->
+    <!-- Upper Cyber Arc (Cyan Glow) - Expanded to match 190px sensor physical boundary -->
     <path
         android:strokeColor="#00E5FF"
-        android:strokeWidth="2.5"
+        android:strokeWidth="3.0"
         android:strokeLineCap="round"
-        android:pathData="M 15.36,30.0 A 40,40 0 0,1 84.64,30.0" />
+        android:pathData="M 9.6,28.0 A 46,46 0 0,1 90.4,28.0" />
 
-    <!-- Lower Cyber Arc (Cyan Glow) -->
+    <!-- Lower Cyber Arc (Cyan Glow) - Expanded to match 190px sensor physical boundary -->
     <path
         android:strokeColor="#00E5FF"
-        android:strokeWidth="2.5"
+        android:strokeWidth="3.0"
         android:strokeLineCap="round"
-        android:pathData="M 84.64,70.0 A 40,40 0 0,1 15.36,70.0" />
+        android:pathData="M 90.4,72.0 A 46,46 0 0,1 9.6,72.0" />
 
     <!-- Corner Accent Pips (Cyan) -->
     <path
         android:fillColor="#00E5FF"
-        android:pathData="M 78.28,19.52 A 2.2,2.2 0 1,0 78.28,23.92 A 2.2,2.2 0 1,0 78.28,19.52 Z" />
+        android:pathData="M 81.8,16.0 A 2.2,2.2 0 1,0 81.8,20.4 A 2.2,2.2 0 1,0 81.8,16.0 Z" />
     <path
         android:fillColor="#00E5FF"
-        android:pathData="M 21.72,19.52 A 2.2,2.2 0 1,0 21.72,23.92 A 2.2,2.2 0 1,0 21.72,19.52 Z" />
+        android:pathData="M 18.2,16.0 A 2.2,2.2 0 1,0 18.2,20.4 A 2.2,2.2 0 1,0 18.2,16.0 Z" />
     <path
         android:fillColor="#00E5FF"
-        android:pathData="M 21.72,76.08 A 2.2,2.2 0 1,0 21.72,80.48 A 2.2,2.2 0 1,0 21.72,76.08 Z" />
+        android:pathData="M 18.2,79.6 A 2.2,2.2 0 1,0 18.2,84.0 A 2.2,2.2 0 1,0 18.2,79.6 Z" />
     <path
         android:fillColor="#00E5FF"
-        android:pathData="M 78.28,76.08 A 2.2,2.2 0 1,0 78.28,80.48 A 2.2,2.2 0 1,0 78.28,76.08 Z" />
+        android:pathData="M 81.8,79.6 A 2.2,2.2 0 1,0 81.8,84.0 A 2.2,2.2 0 1,0 81.8,79.6 Z" />
 
     <!-- Center Optical Target Dot (Cyan) -->
     <path
         android:fillColor="#00E5FF"
         android:pathData="M 50,47.8 A 2.2,2.2 0 1,0 50,52.2 A 2.2,2.2 0 1,0 50,47.8 Z" />
 
-    <!-- Modern Fingerprint Ridges (Pure Crisp White) -->
+    <!-- Modern Fingerprint Ridges (Pure Crisp White, scaled proportionally) -->
     <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="2.4"
+        android:strokeWidth="2.8"
         android:strokeLineCap="round"
-        android:pathData="M 44,56 C 44,48 56,48 56,56 L 56,58" />
+        android:pathData="M 43,57 C 43,47 57,47 57,57 L 57,60" />
 
     <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="2.4"
+        android:strokeWidth="2.8"
         android:strokeLineCap="round"
-        android:pathData="M 38,58 C 38,42 62,42 62,58 L 62,60" />
+        android:pathData="M 36,59 C 36,40 64,40 64,59 L 64,62" />
 
     <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="2.4"
+        android:strokeWidth="2.8"
         android:strokeLineCap="round"
-        android:pathData="M 32,60 C 32,36 68,36 68,60 L 68,62" />
+        android:pathData="M 29,62 C 29,33 71,33 71,62 L 71,65" />
 
     <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="2.4"
+        android:strokeWidth="2.8"
         android:strokeLineCap="round"
-        android:pathData="M 28,52 C 29,31 71,31 72,52" />
+        android:pathData="M 24,52 C 25,27 75,27 76,52" />
 
     <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="2.4"
+        android:strokeWidth="2.8"
         android:strokeLineCap="round"
-        android:pathData="M 37,64 C 42,68 58,68 63,64" />
+        android:pathData="M 35,66 C 41,71 59,71 65,66" />
 </vector>
-

@@ -4,9 +4,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/symbiot_macha5g.mk
+    $(LOCAL_DIR)/lineage_macha5g.mk
 
 COMMON_LUNCH_CHOICES := \
-    symbiot_macha5g-bp4a-eng \
-    symbiot_macha5g-bp4a-userdebug \
-    symbiot_macha5g-bp4a-user
+    lineage_macha5g-cp2a-eng \
+    lineage_macha5g-cp2a-userdebug \
+    lineage_macha5g-cp2a-user

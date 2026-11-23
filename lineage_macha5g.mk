@@ -19,10 +19,10 @@ $(call inherit-product, vendor/advan/macha5g/macha5g-vendor.mk)
 # Force insecure ADB for recovery debugging
 WITH_ADB_INSECURE := true
 
-# Inherit some common SymbiotOS stuff.
-$(call inherit-product, vendor/symbiot/config/common_full_phone.mk)
+# Inherit some common Lineage stuff.
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-PRODUCT_NAME := symbiot_macha5g
+PRODUCT_NAME := lineage_macha5g
 PRODUCT_DEVICE := macha5g
 PRODUCT_MANUFACTURER := ADVAN
 PRODUCT_BRAND := ADVAN
@@ -36,5 +36,4 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     SystemDevice=ADVAN_MACHA \
     SystemName=ADVAN_MACHA
 
-# SymbiotOS: persempit PRODUCT_LOCALES (pola fogos 0293)
 PRODUCT_LOCALES := en_US in_ID jv_Java_ID

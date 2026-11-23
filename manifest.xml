@@ -591,5 +591,4 @@
         <version>2</version>
         <fqname>IPower/default</fqname>
     </hal>
-    <kernel target-level="7"/>
 </manifest>

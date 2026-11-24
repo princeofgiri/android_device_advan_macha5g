@@ -1,25 +1,36 @@
-diff --git a/libs/gui/BLASTBufferQueue.cpp b/libs/gui/BLASTBufferQueue.cpp
-index 05fbc148d2..47f365d14b 100644
---- a/libs/gui/BLASTBufferQueue.cpp
-+++ b/libs/gui/BLASTBufferQueue.cpp
-@@ -1322,8 +1322,11 @@ void BLASTBufferQueue::resizeFrameEventHistory(size_t newSize) {
-     // This can be null during creation of the buffer queue, but resizing won't do anything at that
-     // point in time, so just ignore. This can go away once the class relationships and lifetimes of
-     // objects are cleaned up with a major refactor of BufferQueue as a whole.
-+    // NOTE: Do NOT acquire mMutex here! BBQBufferQueueProducer::setMaxDequeuedBufferCount() calls
-+    // resizeFrameEventHistory() synchronously from initialize(), which ALREADY holds mMutex.
-+    // Acquiring mMutex here causes a fatal self-deadlock because mMutex is non-recursive std::mutex.
-+    // mBufferItemConsumer itself is guarded by its own internal mMutex.
-     if (mBufferItemConsumer != nullptr) {
--        std::unique_lock _lock{mMutex};
-         mBufferItemConsumer->resizeFrameEventHistory(newSize);
-     }
- }
+diff --git a/libs/binder/Android.bp b/libs/binder/Android.bp
+index b3caaaee6b..13344d262d 100644
+--- a/libs/binder/Android.bp
++++ b/libs/binder/Android.bp
+@@ -598,6 +598,10 @@ cc_defaults {
+             exclude_srcs: [
+                 ":libbinder_device_interface_sources",
+             ],
++            exclude_shared_libs: [
++                "libapexsupport",
++                "libvndksupport",
++            ],
+         },
+         host: {
+             srcs: [
+diff --git a/libs/binder/IServiceManager.cpp b/libs/binder/IServiceManager.cpp
+index 0a564aa0fb..779ee0a3ce 100644
+--- a/libs/binder/IServiceManager.cpp
++++ b/libs/binder/IServiceManager.cpp
+@@ -53,7 +53,7 @@
+ #include "ServiceManagerHost.h"
+ #endif
+ 
+-#if defined(__ANDROID__) && !defined(__ANDROID_RECOVERY__) && !defined(__ANDROID_NATIVE_BRIDGE__)
++#if defined(__ANDROID__) && !defined(__ANDROID_VENDOR__) && !defined(__ANDROID_RECOVERY__) && !defined(__ANDROID_NATIVE_BRIDGE__)
+ #include <android/apexsupport.h>
+ #include <vndksupport/linker.h>
+ #endif
 diff --git a/services/inputflinger/reader/EventHub.cpp b/services/inputflinger/reader/EventHub.cpp
-index c6054e7b80..96b9fde4b5 100644
+index ca79fc5ef2..ba129f0dab 100644
 --- a/services/inputflinger/reader/EventHub.cpp
 +++ b/services/inputflinger/reader/EventHub.cpp
-@@ -425,8 +425,10 @@ static std::unordered_map<int32_t /*batteryId*/, RawBatteryInfo> readBatteryConf
+@@ -428,8 +428,10 @@ static std::unordered_map<int32_t /*batteryId*/, RawBatteryInfo> readBatteryConf
                  info.flags |= it->second;
              }
          }
@@ -32,7 +43,7 @@ index c6054e7b80..96b9fde4b5 100644
      }
      return batteryInfos;
  }
-@@ -1838,7 +1840,7 @@ std::optional<int32_t> EventHub::getBatteryCapacity(RawDeviceId deviceId, int32_
+@@ -1949,7 +1951,7 @@ std::optional<int32_t> EventHub::getBatteryCapacity(RawDeviceId deviceId, int32_
  
          const auto& infos = getBatteryInfoLocked(deviceId);
          auto it = infos.find(batteryId);
@@ -41,12 +52,12 @@ index c6054e7b80..96b9fde4b5 100644
              return std::nullopt;
          }
          batteryPath = it->second.path;
-@@ -1879,7 +1881,7 @@ std::optional<int32_t> EventHub::getBatteryStatus(RawDeviceId deviceId, int32_t
+@@ -1990,7 +1992,7 @@ std::optional<int32_t> EventHub::getBatteryStatus(RawDeviceId deviceId, int32_t
  
          const auto& infos = getBatteryInfoLocked(deviceId);
          auto it = infos.find(batteryId);
 -        if (it == infos.end()) {
-+        if (it == infos.end() || !it->second.flags.test(InputBatteryClass::STATUS)) {
++        if (it == infos.end() || !it->second.flags.test(InputBatteryClass::CAPACITY)) {
              return std::nullopt;
          }
          batteryPath = it->second.path;

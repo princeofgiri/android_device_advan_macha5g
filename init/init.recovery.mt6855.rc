@@ -12,6 +12,7 @@ on fs
     write /sys/class/udc/musb-hdrc/device/cmode 3
     write /sys/class/usb_role/mt_usb-role-switch/role device
     write /sys/devices/platform/soc/mt_usb/portmode 0
+    setprop sys.usb.config adb
 
 on post-fs
     # Support A/B feature for UFS boot region

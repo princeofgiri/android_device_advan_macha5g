@@ -20,6 +20,7 @@ prebuilt_etc {
 prebuilt_etc {
     name: "init.macha5g.rc",
     src: "init.macha5g.rc",
+    relative_install_path: "init/hw",
     vendor: true,
 }
 

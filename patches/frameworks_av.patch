@@ -1,5 +1,5 @@
 diff --git a/media/codec2/hal/aidl/Android.bp b/media/codec2/hal/aidl/Android.bp
-index e294a316c8..570cebb5f7 100644
+index 00b747d126..9739cb9baf 100644
 --- a/media/codec2/hal/aidl/Android.bp
 +++ b/media/codec2/hal/aidl/Android.bp
 @@ -83,6 +83,7 @@ cc_library {
@@ -10,7 +10,7 @@ index e294a316c8..570cebb5f7 100644
      ],
  
      shared_libs: [
-@@ -176,6 +177,7 @@ cc_library {
+@@ -167,6 +168,7 @@ cc_defaults {
  
      header_libs: [
          "libcodec2_internal", // private

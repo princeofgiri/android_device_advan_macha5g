@@ -6,6 +6,7 @@ import /vendor/etc/init/hw/init.project.rc
 import /vendor/etc/init/hw/init.aee.rc
 import /vendor/etc/init/hw/init.sensor_2_0.rc
 import /vendor/etc/init/hw/init.cgroup.rc
+import /vendor/etc/init/hw/init.macha5g.rc
 
 # init.modem.rc must be the LAST rc file because vold.post_fs_data_done is set in it
 import /vendor/etc/init/hw/init.modem.rc
@@ -88,8 +89,8 @@ on charger
     chown system system /mnt/vendor/nvcfg
     chmod 0771 /mnt/vendor/nvcfg
     restorecon_recursive /mnt/vendor/nvcfg
-    write /sys/devices/platform/battery_meter/FG_daemon_log_level 7
-    write /sys/bus/platform/devices/battery/FG_daemon_log_level 7
+    write /sys/devices/platform/battery_meter/FG_daemon_log_level 1
+    write /sys/bus/platform/devices/battery/FG_daemon_log_level 1
     # Permissions for System Server and daemons.
     chown system system /sys/power/autosleep
     chown system system /sys/power/state
@@ -136,6 +137,8 @@ on fs
     write /proc/bootprof "INIT:Mount_START"
     write /sys/kernel/tracing/trace_marker "B|1|Mount"
     mount_all --early
+    mkdir /mnt/vendor/persist/mcRegistry 0775 system system
+    start mobicore
     # exec /system/bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/by-name/userdata
     write /sys/kernel/tracing/trace_marker "E"
     write /proc/bootprof "INIT:Mount_END"
@@ -157,6 +160,7 @@ on late-fs
 
 on post-fs
     write /proc/bootprof "INIT:post-fs"
+    start mobicore
 
     # Support legacy paths
     symlink /sdcard /storage/sdcard0
@@ -1166,7 +1170,7 @@ on property:persist.vendor.mediatek.fg.force25c=0
     write /dev/gauge/Battery_Temperature 65535
 
 on property:persist.vendor.mediatek.fg.log.enable=1
-    write /dev/gauge/FG_daemon_log_level 7
+    write /dev/gauge/FG_daemon_log_level 1
     write /proc/sys/kernel/printk 8
 
 # add meta_tst for ATM

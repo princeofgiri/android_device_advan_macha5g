@@ -38,10 +38,10 @@ index e08ffecfc..82b2b6967 100644
  
  }  // namespace android
 diff --git a/libutils/binder/RefBase.cpp b/libutils/binder/RefBase.cpp
-index 7510aa235..c6c65ef35 100644
+index cbb260261..ba8e26609 100644
 --- a/libutils/binder/RefBase.cpp
 +++ b/libutils/binder/RefBase.cpp
-@@ -483,8 +483,14 @@ void RefBase::incStrongRequireStrong(const void* id) const {
+@@ -484,8 +484,14 @@ void RefBase::incStrongRequireStrong(const void* id) const {
      refs->addStrongRef(id);
      const int32_t c = refs->mStrong.fetch_add(1, std::memory_order_relaxed);
  
@@ -58,7 +58,7 @@ index 7510aa235..c6c65ef35 100644
  #if PRINT_REFS
      ALOGD("incStrong (requiring strong) of %p from %p: cnt=%d\n", this, id, c);
  #endif
-@@ -805,7 +811,7 @@ RefBase::~RefBase()
+@@ -847,7 +853,7 @@ RefBase::~RefBase()
              CallStack::logStack(LOG_TAG);
  #endif
          } else if (strongs != 0) {

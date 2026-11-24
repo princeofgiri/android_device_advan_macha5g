@@ -19,6 +19,14 @@ $(call inherit-product, vendor/advan/macha5g/macha5g-vendor.mk)
 # Force insecure ADB for recovery debugging
 WITH_ADB_INSECURE := true
 
+# Enable ADB by default on boot for early bringup debugging
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.adb.secure=0 \
+    ro.debuggable=1 \
+    persist.sys.usb.config=adb \
+    persist.service.adb.enable=1 \
+    ro.vendor.aeev.dynamic.switch=disable
+
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 

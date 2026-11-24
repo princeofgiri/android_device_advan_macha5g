@@ -61,7 +61,8 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/init/init.recovery.mt6855.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.mt6855.rc \
     $(DEVICE_PATH)/init/init.recovery.mt6855.rc:recovery/root/init.recovery.mt6855.rc \
     $(DEVICE_PATH)/init/mtk_plpath_utils:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/system/bin/mtk_plpath_utils \
-    $(DEVICE_PATH)/init/mtk-plpath-utils.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/system/etc/init/mtk-plpath-utils.rc
+    $(DEVICE_PATH)/init/mtk-plpath-utils.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/system/etc/init/mtk-plpath-utils.rc \
+    $(DEVICE_PATH)/init/adbd:$(TARGET_COPY_OUT_SYSTEM)/bin/adbd
 
 # A/B update engine
 PRODUCT_PACKAGES += \
@@ -73,7 +74,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ota.allow_downgrade=true \
     persist.vendor.recovery_allow_spl_downgrade=1 \
     ro.adb.secure=0 \
-    persist.sys.usb.config=adb
+    persist.sys.usb.config=adb \
+    ro.soc.manufacturer=Mediatek \
+    ro.soc.model=MT6855 \
+    ro.vendor.soc.manufacturer=Mediatek \
+    ro.vendor.soc.model=MT6855 \
+    ro.vendor.soc.model_ready=1
 
 # Dynamic partition support in recovery
 PRODUCT_PACKAGES += \

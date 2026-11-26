@@ -247,10 +247,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_VENDOR_LINKER_CONFIG_FRAGMENTS += \
     device/advan/macha5g/linker.config.json
 
-# Enable ADB via network by default
-PRODUCT_SYSTEM_PROPERTIES += \
-    service.adb.tcp.port=5555
-
 
 
 
